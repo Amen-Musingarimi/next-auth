@@ -40,11 +40,18 @@ function SignupPage() {
       <input
         className="p-2 rounded-md border outline-none border-gray-300"
         id="password"
-        type="text"
+        type="password"
         value={user.password}
         onChange={(e) => setUser({ ...user, password: e.target.value })}
         placeholder="password"
       />
+      <button
+        onClick={onSignup}
+        className="p-2 border border-gray-300 rounded-md my-4 focus:outline-none focus:border-gray-600"
+      >
+        Signup Here
+      </button>
+      <Link href="/login">Visit login page</Link>
     </div>
   );
 }
