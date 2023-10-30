@@ -16,7 +16,7 @@ function SignupPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 gap-4">
-      <h1>Signup</h1>
+      <h1 className="text-blue-950 font-semibold text-xl">Sign Up</h1>
       <hr />
       <div className="flex flex-col gap-1">
         <label htmlFor="username">username</label>
@@ -53,11 +53,13 @@ function SignupPage() {
       </div>
       <button
         onClick={onSignup}
-        className="p-2 border border-gray-300 rounded-md my-4 focus:outline-none focus:border-gray-600"
+        className="py-2 px-4 border bg-blue-950 text-white hover:bg-blue-900 rounded-md my-4"
       >
         Signup Here
       </button>
-      <Link href="/login">Visit login page</Link>
+      <Link href="/login" className="text-blue-800 hover:text-blue-700">
+        Visit login page
+      </Link>
     </div>
   );
 }
