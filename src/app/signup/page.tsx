@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 import toast from 'react-hot-toast';
 
 function SignupPage() {
@@ -15,7 +15,7 @@ function SignupPage() {
     username: '',
   });
 
-  const [buttonDisabled, setButtonDisappled] = React.useState(false);
+  const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
   const onSignup = async () => {
@@ -25,7 +25,7 @@ function SignupPage() {
       console.log('Signup Success', response.data);
       router.push('/login');
     } catch (error) {
-      console.log('signup Failed', error.message);
+      console.log('Signup Failed', error.message);
       toast.error(error.message);
     } finally {
       setLoading(false);
@@ -38,9 +38,9 @@ function SignupPage() {
       user.password.length > 0 &&
       user.username.length > 0
     ) {
-      setButtonDisappled(false);
+      setButtonDisabled(false);
     } else {
-      setButtonDisappled(true);
+      setButtonDisabled(true);
     }
   }, [user]);
 
