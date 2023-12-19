@@ -6,10 +6,14 @@ import { useRouter } from 'next/navigation';
 import { Axios } from 'axios';
 
 function LoginPage() {
+  const router = useRouter();
   const [user, setUser] = useState({
     email: '',
     password: '',
   });
+
+  const [buttonDisabled, setButtonDisabled] = React.useState(false);
+  const [loading, setIsLoading] = React.useState(false);
 
   const onLogin = async () => {};
 
