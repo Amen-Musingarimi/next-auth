@@ -1,18 +1,48 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Axios } from 'axios';
+import axios, { Axios } from 'axios';
+import toast from 'react-hot-toast';
 
 function SignupPage() {
+  const router = useRouter();
+
   const [user, setUser] = useState({
     email: '',
     password: '',
     username: '',
   });
 
-  const onSignup = async () => {};
+  const [buttonDisabled, setButtonDisappled] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+
+  const onSignup = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post('api/users/signup', user);
+      console.log('Signup Success', response.data);
+      router.push('/login');
+    } catch (error) {
+      console.log('signup Failed', error.message);
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (
+      user.email.length > 0 &&
+      user.password.length > 0 &&
+      user.username.length > 0
+    ) {
+      setButtonDisappled(false);
+    } else {
+      setButtonDisappled(true);
+    }
+  }, [user]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 gap-4">
